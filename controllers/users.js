@@ -1,8 +1,7 @@
 const bcrypt = require('bcryptjs');
 const User = require('../models/user');
 const ConflictError = require('../errors/conflict-err');
-
-const CREATED = 201;
+const { CREATED } = require('../consts/status-codes');
 
 const createUser = (req, res, next) => {
   const { email, password, name } = req.body;

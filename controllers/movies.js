@@ -1,7 +1,7 @@
 const Movie = require('../models/movie');
 const ForbiddenError = require('../errors/forbidden-err');
+const { CREATED } = require('../consts/status-codes');
 
-const CREATED = 201;
 const createMovie = (req, res, next) => {
   const {
     country,
@@ -16,8 +16,6 @@ const createMovie = (req, res, next) => {
     thumbnail,
     movieId,
   } = req.body;
-
-  // ToDo Проверить работу без деструктуризации
   Movie.create({
     country,
     director,
@@ -37,7 +35,7 @@ const createMovie = (req, res, next) => {
 };
 
 const getMovies = (req, res, next) => {
-  Movie.find({})
+  Movie.find({ owner: req.user._id })
     .then((movies) => {
       res.send({ movies });
     })

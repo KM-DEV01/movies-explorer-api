@@ -11,9 +11,9 @@ const corsOptions = require('./consts/cors-options');
 require('dotenv').config();
 
 const app = express();
-const { PORT = 3000 } = process.env;
+const { PORT = 3000, DATABASE = 'mongodb://127.0.0.1:27017/' } = process.env;
 
-mongoose.connect('mongodb://127.0.0.1:27017/bitfilmsdb', {
+mongoose.connect(`${DATABASE}bitfilmsdb`, {
   useNewUrlParser: true,
 });
 

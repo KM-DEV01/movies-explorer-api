@@ -19,7 +19,6 @@ module.exports = (err, req, res, next) => {
     return;
   }
   if (!err.statusCode) {
-    console.log(err);
     res.status(INTERNAL_ERROR).send({ message: 'Произошла ошибка сервера.' });
     return;
   }

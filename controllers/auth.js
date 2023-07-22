@@ -29,6 +29,8 @@ const auth = (req, res, next) => {
 const logout = (req, res) => {
   res.cookie('jwt', '', {
     httpOnly: true,
+    sameSite: 'none',
+    secure: true,
     maxAge: 0,
   });
   return res.send({
